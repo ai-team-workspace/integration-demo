@@ -2,6 +2,9 @@
 
 
 def summarize_cart(prices):
+      if not prices:
+          return {'item_count': 0, 'total': 0, 'average_price': 0}
+
       total = sum(prices)
       return {
           'item_count': len(prices),
