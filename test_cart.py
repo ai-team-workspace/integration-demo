@@ -19,6 +19,18 @@ class CartTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             summarize_cart([10, -1])
 
+    def test_nan_price_is_rejected(self):
+        with self.assertRaises(ValueError):
+            summarize_cart([float('nan')])
+
+    def test_positive_infinite_price_is_rejected(self):
+        with self.assertRaises(ValueError):
+            summarize_cart([float('inf')])
+
+    def test_negative_infinite_price_is_rejected(self):
+        with self.assertRaises(ValueError):
+            summarize_cart([float('-inf')])
+
     def test_zero_price_is_accepted(self):
         self.assertEqual(summarize_cart([0]), {'item_count': 1, 'total': 0, 'average_price': 0})
 
