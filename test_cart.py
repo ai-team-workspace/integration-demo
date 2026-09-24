@@ -3,6 +3,12 @@ from cart import summarize_cart
 
 
 class CartTests(unittest.TestCase):
+    def test_empty_cart(self):
+        self.assertEqual(
+            summarize_cart([]),
+            {'item_count': 0, 'total': 0, 'average_price': 0},
+        )
+
     def test_multiple_items(self):
         self.assertEqual(summarize_cart([10, 20]), {'item_count': 2, 'total': 30, 'average_price': 15})
 
