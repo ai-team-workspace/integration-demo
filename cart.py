@@ -7,7 +7,7 @@ def summarize_cart(prices):
     if not prices:
         return {'item_count': 0, 'total': 0, 'average_price': 0}
 
-    if any(not math.isfinite(price) or price < 0 for price in prices):
+    if any(not math.isfinite(price) or price <= 0 for price in prices):
         raise ValueError
 
     total = sum(prices)
